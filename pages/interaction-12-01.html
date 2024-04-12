@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Gaph</title>
+		<link rel="stylesheet" href="../src/style.css" />
+	</head>
+	<body>
+		<div>
+			<canvas id="riveCanvas" width="535" height="266"></canvas>
+		</div>
+
+		<!-- RIVE  -->
+		<script src="https://unpkg.com/@rive-app/canvas@2.9.1"></script>
+
+		<script>
+			let sliderRiveB;
+			const riveInstance = new rive.Rive({
+				src: "../rive/int-12_01.riv",
+				canvas: document.getElementById("riveCanvas"),
+				autoplay: true,
+				stateMachines: "interact",
+				onLoad: () => {
+					// Prevent a blurry canvas by using the device pixel ratio
+					riveInstance.resizeDrawingSurfaceToCanvas();
+				},
+			});
+
+			// Resize the drawing surface if the window resizes
+			window.addEventListener(
+				"resize",
+				() => {
+					riveInstance.resizeDrawingSurfaceToCanvas();
+				},
+				false
+			);
+		</script>
+	</body>
+</html>
